@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:checkableBehavior="single">
+        <item android:title="主要功能">
+            <menu>
+                <item
+                    android:id="@+id/nav_menu_random"
+                    android:icon="@drawable/ic_shuffle_white_24dp"
+                    android:title="随机页" />
+
+                <item
+                    android:id="@+id/nav_menu_all_food"
+                    android:icon="@drawable/ic_assessment_white_24dp"
+                    android:title="查看食物" />
+
+                <item
+                    android:id="@+id/nav_menu_i_eat"
+                    android:icon="@drawable/ic_assignment_white_24dp"
+                    android:title="我吃过的" />
+
+                <item
+                    android:id="@+id/nav_menu_add_food"
+                    android:icon="@drawable/ic_add_box_white_24dp"
+                    android:title="添加食物" />
+
+                <item
+                    android:id="@+id/nav_menu_export_import"
+                    android:icon="@drawable/ic_assignment_return_white_24dp"
+                    android:title="导出|导入" />
+            </menu>
+        </item>
+    </group>
+
+</menu>
