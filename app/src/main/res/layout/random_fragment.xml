@@ -5,10 +5,25 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <com.jinjunhuang.eatwhat.weidge.AnimCircleView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <com.jinjunhuang.eatwhat.weidge.AnimCircleView
+            android:id="@+id/random_fragment_anim_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/random_fragment_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="点击挑选"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,24 +51,28 @@
             android:orientation="horizontal">
 
             <CheckBox
+                android:id="@+id/random_fragment_canteen_one_cb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="一饭" />
 
             <CheckBox
+                android:id="@+id/random_fragment_canteen_two_cb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="二饭" />
 
             <CheckBox
+                android:id="@+id/random_fragment_canteen_three_cb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="三饭" />
 
             <CheckBox
+                android:id="@+id/random_fragment_canteen_four_cb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -82,21 +101,26 @@
             android:orientation="horizontal">
 
             <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <TextView
+                android:id="@+id/random_fragment_price_start_cb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="至" />
 
             <EditText
+                android:id="@+id/random_fragment_price_end_cb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:inputType="number" />
         </LinearLayout>
 
         <!--种类-->
@@ -119,18 +143,21 @@
             android:orientation="horizontal">
 
             <CheckBox
+                android:id="@+id/random_fragment_kind_rich_cb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="饭" />
 
             <CheckBox
+                android:id="@+id/random_fragment_kind_noodle_cb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="面粉" />
 
             <CheckBox
+                android:id="@+id/random_fragment_kind_porridge_cb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
