@@ -1,6 +1,7 @@
-package com.jinjunhuang.eatwhat.common;
+package com.jinjunhuang.eatwhat.common.application;
 
 import com.demo.jianjunhuang.mvptools.integration.BaseApplication;
+import com.jinjunhuang.eatwhat.common.db.helper.FoodDbOpenHelper;
 
 /**
  * @author jianjunhuang.me@foxmail.com
@@ -11,6 +12,6 @@ public class EatWhatApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        FoodDbOpenHelper.init(this);
     }
 }

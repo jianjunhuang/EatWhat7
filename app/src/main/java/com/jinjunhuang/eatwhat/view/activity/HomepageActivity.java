@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.transition.Transition;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.demo.jianjunhuang.mvptools.integration.BaseActivity;
+import com.demo.jianjunhuang.mvptools.integration.BaseFragment;
 import com.demo.jianjunhuang.mvptools.utils.ToastUtils;
 import com.jinjunhuang.eatwhat.R;
 import com.jinjunhuang.eatwhat.view.fragment.AddFoodFragment;
@@ -42,7 +44,6 @@ public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItem
     private WhatIEatFragment whatIEatFragment;
 
     private FragmentManager fragmentManager;
-    private FragmentTransaction transaction;
 
     private boolean isDoubleClick = false;
 
@@ -85,10 +86,42 @@ public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItem
 
     private void initFragment() {
         fragmentManager = getSupportFragmentManager();
-        transaction = fragmentManager.beginTransaction();
         randomFragment = new RandomFragment();
-        transaction.add(R.id.homepage_fl, randomFragment);
+        addFoodFragment = new AddFoodFragment();
+        importAndExportFragment = new ImportAndExportFragment();
+        showAllFoodFragment = new ShowAllFoodFragment();
+        whatIEatFragment = new WhatIEatFragment();
+        showFragment(randomFragment);
+    }
+
+    private void showFragment(BaseFragment fragment) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        hideFragment(transaction);
+        transaction.isAddToBackStackAllowed();
+        if (!fragment.isAdded()) {
+            transaction.add(R.id.homepage_fl, fragment);
+        } else {
+            transaction.show(fragment);
+        }
         transaction.commit();
+    }
+
+    private void hideFragment(FragmentTransaction transaction) {
+        if (randomFragment != null && randomFragment.isVisible()) {
+            transaction.hide(randomFragment);
+        }
+        if (addFoodFragment != null && addFoodFragment.isVisible()) {
+            transaction.hide(addFoodFragment);
+        }
+        if (importAndExportFragment != null && importAndExportFragment.isVisible()) {
+            transaction.hide(importAndExportFragment);
+        }
+        if (showAllFoodFragment != null && showAllFoodFragment.isVisible()) {
+            transaction.hide(showAllFoodFragment);
+        }
+        if (whatIEatFragment != null && whatIEatFragment.isVisible()) {
+            transaction.hide(whatIEatFragment);
+        }
     }
 
     private void initToolbar() {
@@ -115,6 +148,28 @@ public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItem
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_menu_add_food: {
+                showFragment(addFoodFragment);
+                break;
+            }
+            case R.id.nav_menu_all_food: {
+                showFragment(showAllFoodFragment);
+                break;
+            }
+            case R.id.nav_menu_export_import: {
+                showFragment(importAndExportFragment);
+                break;
+            }
+            case R.id.nav_menu_i_eat: {
+                showFragment(whatIEatFragment);
+                break;
+            }
+            case R.id.nav_menu_random: {
+                showFragment(randomFragment);
+                break;
+            }
+        }
         drawerLayout.closeDrawer(Gravity.LEFT);
         return false;
     }

@@ -1,4 +1,4 @@
-package com.jinjunhuang.eatwhat.weidge;
+package com.jinjunhuang.eatwhat.common.weidge;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;

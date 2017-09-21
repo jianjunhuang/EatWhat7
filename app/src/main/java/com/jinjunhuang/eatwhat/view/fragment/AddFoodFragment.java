@@ -3,6 +3,7 @@ package com.jinjunhuang.eatwhat.view.fragment;
 import android.view.View;
 
 import com.demo.jianjunhuang.mvptools.integration.BaseFragment;
+import com.jinjunhuang.eatwhat.R;
 
 /**
  * @author jianjunhuang.me@foxmail.com
@@ -12,7 +13,7 @@ import com.demo.jianjunhuang.mvptools.integration.BaseFragment;
 public class AddFoodFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.add_food_fragment;
     }
 
     @Override

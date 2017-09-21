@@ -10,7 +10,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <com.jinjunhuang.eatwhat.weidge.AnimCircleView
+        <com.jinjunhuang.eatwhat.common.weidge.AnimCircleView
             android:id="@+id/random_fragment_anim_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -46,6 +46,8 @@
             android:background="@color/divider" />
 
         <LinearLayout
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -95,6 +97,8 @@
             android:background="@color/divider" />
 
         <LinearLayout
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -138,6 +142,8 @@
             android:background="@color/divider" />
 
         <LinearLayout
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
