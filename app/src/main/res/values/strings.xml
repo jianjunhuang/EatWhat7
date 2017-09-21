@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">EatWhat7</string>
+
+    <string-array name="canteen_array">
+        <item>一饭</item>
+        <item>二饭</item>
+        <item>三饭</item>
+        <item>四饭</item>
+    </string-array>
+
+    <string-array name="kind_array">
+        <item>饭</item>
+        <item>面</item>
+        <item>粥</item>
+    </string-array>
 </resources>
