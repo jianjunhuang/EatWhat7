@@ -33,8 +33,8 @@ public class FoodDbOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String foodTableSql = "create table if not exist food (canteen integer , name varchar(64) , price float , kind integer , score float , id varchar(32))";
-        String eatTableSql = "create table if not exist eat (id varchar(32) , date varchar(32))";
+        String foodTableSql = "create table if not exists food (canteen integer , name varchar(64) , price float , kind integer , score float , id varchar(32))";
+        String eatTableSql = "create table if not exists eat (id varchar(32) , date varchar(32))";
         db.execSQL(foodTableSql);
         db.execSQL(eatTableSql);
     }

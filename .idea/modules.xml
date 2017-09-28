@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EatWhat.iml" filepath="$PROJECT_DIR$/EatWhat.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loadingcirclebtn/loadingcirclebtn.iml" filepath="$PROJECT_DIR$/loadingcirclebtn/loadingcirclebtn.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvptools/mvptools.iml" filepath="$PROJECT_DIR$/mvptools/mvptools.iml" />
     </modules>
   </component>

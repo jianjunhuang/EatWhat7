@@ -4,6 +4,9 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author jianjunhuang.me@foxmail.com
  * @since 2017/5/24.
@@ -105,5 +108,18 @@ public class UiUtils {
       e.printStackTrace();
     }
     return 0;
+  }
+
+  /**
+   * 判断是否全为空白字符，包含空格，制表符，换页符
+   *
+   * @param str
+   * @return
+   */
+  public static boolean isAllBlockChar(String str) {
+    String patternStr = "\\s*";
+    Pattern pattern = Pattern.compile(patternStr);
+    Matcher matcher = pattern.matcher(str);
+    return matcher.matches();
   }
 }
