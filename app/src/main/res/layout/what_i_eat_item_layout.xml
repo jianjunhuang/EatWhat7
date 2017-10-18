@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/what_i_eat_name_tv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="名称" />
+
+    <TextView
+        android:id="@+id/what_i_eat_canteen_tv"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="饭堂" />
+
+    <TextView
+        android:id="@+id/what_i_eat_price_tv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="价格" />
+
+    <TextView
+        android:id="@+id/what_i_eat_kind_tv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="种类" />
+
+    <TextView
+        android:id="@+id/what_i_eat_score_tv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="评分" />
+
+    <TextView
+        android:id="@+id/what_i_eat_date_tv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="日期" />
+</LinearLayout>

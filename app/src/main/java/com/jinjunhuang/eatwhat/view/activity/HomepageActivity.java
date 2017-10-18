@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.transition.Transition;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -13,14 +12,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-
 import com.demo.jianjunhuang.mvptools.integration.BaseActivity;
 import com.demo.jianjunhuang.mvptools.integration.BaseFragment;
 import com.demo.jianjunhuang.mvptools.utils.ToastUtils;
 import com.jinjunhuang.eatwhat.R;
 import com.jinjunhuang.eatwhat.view.fragment.AddFoodFragment;
-import com.jinjunhuang.eatwhat.view.fragment.ImportAndExportFragment;
 import com.jinjunhuang.eatwhat.view.fragment.RandomFragment;
 import com.jinjunhuang.eatwhat.view.fragment.ShowAllFoodFragment;
 import com.jinjunhuang.eatwhat.view.fragment.WhatIEatFragment;
@@ -38,7 +34,6 @@ public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItem
     private NavigationView navigationView;
 
     private AddFoodFragment addFoodFragment;
-    private ImportAndExportFragment importAndExportFragment;
     private RandomFragment randomFragment;
     private ShowAllFoodFragment showAllFoodFragment;
     private WhatIEatFragment whatIEatFragment;
@@ -88,7 +83,6 @@ public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItem
         fragmentManager = getSupportFragmentManager();
         randomFragment = new RandomFragment();
         addFoodFragment = new AddFoodFragment();
-        importAndExportFragment = new ImportAndExportFragment();
         showAllFoodFragment = new ShowAllFoodFragment();
         whatIEatFragment = new WhatIEatFragment();
         showFragment(randomFragment);
@@ -112,9 +106,6 @@ public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItem
         }
         if (addFoodFragment != null && addFoodFragment.isVisible()) {
             transaction.hide(addFoodFragment);
-        }
-        if (importAndExportFragment != null && importAndExportFragment.isVisible()) {
-            transaction.hide(importAndExportFragment);
         }
         if (showAllFoodFragment != null && showAllFoodFragment.isVisible()) {
             transaction.hide(showAllFoodFragment);
@@ -155,10 +146,6 @@ public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItem
             }
             case R.id.nav_menu_all_food: {
                 showFragment(showAllFoodFragment);
-                break;
-            }
-            case R.id.nav_menu_export_import: {
-                showFragment(importAndExportFragment);
                 break;
             }
             case R.id.nav_menu_i_eat: {

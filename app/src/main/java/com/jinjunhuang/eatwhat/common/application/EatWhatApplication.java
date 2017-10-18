@@ -1,7 +1,7 @@
 package com.jinjunhuang.eatwhat.common.application;
 
 import com.demo.jianjunhuang.mvptools.integration.BaseApplication;
-import com.jinjunhuang.eatwhat.common.db.helper.FoodDbOpenHelper;
+import com.jinjunhuang.eatwhat.model.local.FoodDbOpenHelper;
 
 /**
  * @author jianjunhuang.me@foxmail.com

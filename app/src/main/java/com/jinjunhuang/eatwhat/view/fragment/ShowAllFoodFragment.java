@@ -97,7 +97,13 @@ public class ShowAllFoodFragment extends BaseFragment implements ShowAllFoodCont
         }
     }
 
-    class ShowAllFoodAdapter extends RecyclerAdapter<FoodBean> {
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
+    }
+
+    private class ShowAllFoodAdapter extends RecyclerAdapter<FoodBean> {
         public ShowAllFoodAdapter(Context context, List<FoodBean> list, int layoutId) {
             super(context, list, layoutId);
         }

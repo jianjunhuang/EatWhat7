@@ -1,25 +1,24 @@
-package com.jinjunhuang.eatwhat.common.db.dao;
+package com.jinjunhuang.eatwhat.model.local;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.jinjunhuang.eatwhat.common.db.helper.FoodDbOpenHelper;
 import com.jinjunhuang.eatwhat.model.FilterBean;
 import com.jinjunhuang.eatwhat.model.FoodBean;
+import com.jinjunhuang.eatwhat.model.IFoodDataOp;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author jianjunhuang.me@foxmail.com
  *         create on 2017/9/21.
  */
 
-public class FoodDbDao implements IFoodDbDao<FoodBean, FilterBean> {
+public class FoodLocalDataOp implements IFoodDataOp {
 
-    private String foodTable = "food";
-    private String eatTable = "eat";
+    private String foodTable = FoodDbOpenHelper.FOOD_TABLE;
+    private String eatTable = FoodDbOpenHelper.FOOD_I_EAT_TABLE;
 
     @Override
     public List<FoodBean> getSpecifyFoods(FilterBean bean) {
@@ -108,7 +107,7 @@ public class FoodDbDao implements IFoodDbDao<FoodBean, FilterBean> {
     public List<FoodBean> getIEatFoods() {
         SQLiteDatabase database = null;
         List<FoodBean> foodList = new ArrayList<>();
-        String sql = "select * from food and eat";
+        String sql = "select * from " + foodTable + " and " + eatTable;
         Cursor cursor = null;
         try {
             database = FoodDbOpenHelper.getHelper().getReadableDatabase();
@@ -141,10 +140,29 @@ public class FoodDbDao implements IFoodDbDao<FoodBean, FilterBean> {
     public boolean addFood(FoodBean foodBean) {
         SQLiteDatabase database = null;
         boolean flag = false;
-        String sql = "insert into food (canteen , name , price , kind , score , id )values(?,?,?,?,?,?)";
+        String sql = "insert into " + foodTable + " (canteen , name , price , kind , score , id )values(?,?,?,?,?,?)";
         try {
             database = FoodDbOpenHelper.getHelper().getWritableDatabase();
             database.execSQL(sql, new Object[]{foodBean.getCanteen(), foodBean.getName(), foodBean.getPrice(), foodBean.getKind(), foodBean.getScore(), foodBean.getId()});
+            flag = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (database != null) {
+                database.close();
+            }
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean changeScore(FoodBean bean) {
+        SQLiteDatabase database = null;
+        boolean flag = false;
+        String sql = "update " + foodTable + " (price)values(?) where id = ?";
+        try {
+            database = FoodDbOpenHelper.getHelper().getWritableDatabase();
+            database.execSQL(sql, new Object[]{bean.getPrice(), bean.getId()});
             flag = true;
         } catch (Exception e) {
             e.printStackTrace();

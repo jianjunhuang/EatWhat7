@@ -1,7 +1,6 @@
 package com.jinjunhuang.eatwhat.view.fragment;
 
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -9,10 +8,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.demo.jianjunhuang.mvptools.integration.BaseFragment;
-import com.demo.jianjunhuang.mvptools.utils.DeviceUtils;
 import com.demo.jianjunhuang.mvptools.utils.UiUtils;
 import com.jinjunhuang.eatwhat.R;
-import com.jinjunhuang.eatwhat.common.db.dao.FoodDbDao;
+import com.jinjunhuang.eatwhat.model.local.FoodLocalDataOp;
 import com.jinjunhuang.eatwhat.model.FoodBean;
 import com.jinjunhuang.loadingcirclebtn.LoadingCircleBtn;
 
@@ -94,7 +92,7 @@ public class AddFoodFragment extends BaseFragment implements Spinner.OnItemSelec
             foodBean.setKind(kindSp.getSelectedItemPosition());
             foodBean.setId(name + canteenSp.getSelectedItemPosition() + priceStr + kindSp.getSelectedItemPosition());
 
-            FoodDbDao dao = new FoodDbDao();
+            FoodLocalDataOp dao = new FoodLocalDataOp();
             boolean tag = dao.addFood(foodBean);
             if (tag) {
                 addBtn.setStatus(LoadingCircleBtn.STATUS_LOAD_SUCCESS);

@@ -25,10 +25,6 @@
                     android:icon="@drawable/ic_add_box_white_24dp"
                     android:title="添加食物" />
 
-                <item
-                    android:id="@+id/nav_menu_export_import"
-                    android:icon="@drawable/ic_assignment_return_white_24dp"
-                    android:title="导出|导入" />
             </menu>
         </item>
     </group>

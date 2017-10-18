@@ -1,6 +1,6 @@
 package com.jinjunhuang.eatwhat.model;
 
-import com.jinjunhuang.eatwhat.common.db.dao.FoodDbDao;
+import com.jinjunhuang.eatwhat.model.local.FoodLocalDataOp;
 import com.jinjunhuang.eatwhat.contract.ShowAllFoodContract;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ShowAllFoodModel implements ShowAllFoodContract.Model<FoodBean> {
 
-    private FoodDbDao dao = new FoodDbDao();
+    private FoodLocalDataOp dao = new FoodLocalDataOp();
 
     @Override
     public void onDestroy() {

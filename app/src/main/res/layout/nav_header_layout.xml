@@ -1,12 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="112dp"
+    android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft="16dp">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/nav_header_avatar_img"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@mipmap/ic_launcher_round" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/nav_header_username_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/nav_header_avatar_img"
+        android:layout_alignStart="@id/nav_header_avatar_img"
+        android:layout_below="@id/nav_header_avatar_img"
+        android:layout_marginTop="8dp"
+        android:text="username"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/nav_header_email_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/nav_header_avatar_img"
+        android:layout_alignStart="@id/nav_header_avatar_img"
+        android:layout_below="@id/nav_header_username_tv"
+        android:text="username@email.com"
+        android:textColor="@android:color/white"
+        android:textStyle="italic" />
+</RelativeLayout>
