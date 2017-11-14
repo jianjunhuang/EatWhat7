@@ -1,21 +1,26 @@
-package com.jinjunhuang.eatwhat.model;
+package com.jinjunhuang.eatwhat.model.bean;
 
 import java.util.Date;
+
+import cn.bmob.v3.BmobObject;
 
 /**
  * @author jianjunhuang.me@foxmail.com
  *         create on 2017/9/21.
  */
 
-public class FoodBean {
+public class FoodBean extends BmobObject {
 
-    private int canteen;
-    private String name;
-    private float price;
-    private int kind;
-    private String date;
-    private float score;
     private String id;
+    private Integer kind;
+    private String name;
+    private Integer canteen;
+    private Float price;
+    private Float score;
+
+    public FoodBean() {
+        this.setTableName("food");
+    }
 
     public String getId() {
         return id;
@@ -65,11 +70,4 @@ public class FoodBean {
         this.kind = kind;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }

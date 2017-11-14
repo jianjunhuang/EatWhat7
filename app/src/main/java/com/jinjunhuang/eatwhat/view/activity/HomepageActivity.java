@@ -12,6 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+
 import com.demo.jianjunhuang.mvptools.integration.BaseActivity;
 import com.demo.jianjunhuang.mvptools.integration.BaseFragment;
 import com.demo.jianjunhuang.mvptools.utils.ToastUtils;
@@ -26,7 +29,7 @@ import com.jinjunhuang.eatwhat.view.fragment.WhatIEatFragment;
  *         create on 2017/9/17.
  */
 
-public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener, NavigationView.OnNavigationItemSelectedListener {
+public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener, NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
@@ -77,6 +80,7 @@ public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItem
     protected void initListener() {
         navigationView.setNavigationItemSelectedListener(this);
         toolbar.setOnMenuItemClickListener(this);
+        navigationView.getHeaderView(0).setOnClickListener(this);
     }
 
     private void initFragment() {
@@ -159,5 +163,10 @@ public class HomepageActivity extends BaseActivity implements Toolbar.OnMenuItem
         }
         drawerLayout.closeDrawer(Gravity.LEFT);
         return false;
+    }
+
+    @Override
+    public void onClick(View v) {
+        startActivity(LoginActivity.class);
     }
 }

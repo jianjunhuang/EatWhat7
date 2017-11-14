@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import com.demo.jianjunhuang.mvptools.integration.BaseFragment;
 import com.demo.jianjunhuang.mvptools.widget.RefreshRecyclerView;
 import com.jinjunhuang.eatwhat.R;
 import com.jinjunhuang.eatwhat.contract.ShowAllFoodContract;
-import com.jinjunhuang.eatwhat.model.FoodBean;
+import com.jinjunhuang.eatwhat.model.bean.FoodBean;
 import com.jinjunhuang.eatwhat.presenter.impl.ShowAllFoodPresenter;
 
 import java.util.ArrayList;

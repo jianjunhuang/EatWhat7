@@ -1,5 +1,6 @@
 package com.jinjunhuang.eatwhat.model;
 
+import com.jinjunhuang.eatwhat.model.bean.FoodBean;
 import com.jinjunhuang.eatwhat.model.local.FoodLocalDataOp;
 import com.jinjunhuang.eatwhat.contract.WhatIEatContract;
 
@@ -21,7 +22,7 @@ public class WhatIEatModel implements WhatIEatContract.Model<FoodBean> {
 
     @Override
     public List<FoodBean> loadData() {
-        return dao.getIEatFoods();
+        return null;
     }
 
     @Override

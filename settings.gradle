@@ -1,1 +1,1 @@
-include ':app', ':mvptools', ':loadingcirclebtn'
+include ':app', ':mvptools', ':loadingcirclebtn', ':shadowlayoutlibrary'

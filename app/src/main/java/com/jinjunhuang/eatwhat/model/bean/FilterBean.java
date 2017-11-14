@@ -1,4 +1,4 @@
-package com.jinjunhuang.eatwhat.model;
+package com.jinjunhuang.eatwhat.model.bean;
 
 /**
  * @author jianjunhuang.me@foxmail.com

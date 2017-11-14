@@ -13,4 +13,7 @@
         <item>面</item>
         <item>粥</item>
     </string-array>
+
+    <string name="login">登录</string>
+    <string name="sign_up">注册</string>
 </resources>

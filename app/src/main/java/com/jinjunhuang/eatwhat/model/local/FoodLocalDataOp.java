@@ -3,8 +3,8 @@ package com.jinjunhuang.eatwhat.model.local;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.jinjunhuang.eatwhat.model.FilterBean;
-import com.jinjunhuang.eatwhat.model.FoodBean;
+import com.jinjunhuang.eatwhat.model.bean.FilterBean;
+import com.jinjunhuang.eatwhat.model.bean.FoodBean;
 import com.jinjunhuang.eatwhat.model.IFoodDataOp;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class FoodLocalDataOp implements IFoodDataOp {
     private String eatTable = FoodDbOpenHelper.FOOD_I_EAT_TABLE;
 
     @Override
-    public List<FoodBean> getSpecifyFoods(FilterBean bean) {
+    public void getSpecifyFoods(FilterBean bean, LoadFoodCallback callback) {
         SQLiteDatabase database = null;
         Cursor cursor = null;
         List<FoodBean> foodList = new ArrayList<>();
@@ -60,6 +60,7 @@ public class FoodLocalDataOp implements IFoodDataOp {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            callback.onDataNotAvilable();
         } finally {
             if (database != null) {
                 database.close();
@@ -68,11 +69,11 @@ public class FoodLocalDataOp implements IFoodDataOp {
                 cursor.close();
             }
         }
-        return foodList;
+        callback.onFoodLoaded(foodList);
     }
 
     @Override
-    public List<FoodBean> getAllFoods() {
+    public void getAllFoods(LoadFoodCallback callback) {
         SQLiteDatabase database = null;
         List<FoodBean> foodList = new ArrayList<>();
         String sql = "select * from " + foodTable;
@@ -92,6 +93,7 @@ public class FoodLocalDataOp implements IFoodDataOp {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            callback.onDataNotAvilable();
         } finally {
             if (database != null) {
                 database.close();
@@ -100,11 +102,11 @@ public class FoodLocalDataOp implements IFoodDataOp {
                 cursor.close();
             }
         }
-        return foodList;
+        callback.onFoodLoaded(foodList);
     }
 
     @Override
-    public List<FoodBean> getIEatFoods() {
+    public void getIEatFoods(LoadFoodCallback callback) {
         SQLiteDatabase database = null;
         List<FoodBean> foodList = new ArrayList<>();
         String sql = "select * from " + foodTable + " and " + eatTable;
@@ -118,13 +120,13 @@ public class FoodLocalDataOp implements IFoodDataOp {
                 foodBean.setScore(cursor.getFloat(cursor.getColumnIndex("score")));
                 foodBean.setKind(cursor.getInt(cursor.getColumnIndex("kind")));
                 foodBean.setPrice(cursor.getFloat(cursor.getColumnIndex("price")));
-                foodBean.setDate(cursor.getString(cursor.getColumnIndex("date")));
                 foodBean.setCanteen(cursor.getInt(cursor.getColumnIndex("canteen")));
                 foodBean.setName(cursor.getString(cursor.getColumnIndex("name")));
                 foodList.add(foodBean);
             }
         } catch (Exception e) {
             e.printStackTrace();
+            callback.onDataNotAvilable();
         } finally {
             if (database != null) {
                 database.close();
@@ -133,18 +135,16 @@ public class FoodLocalDataOp implements IFoodDataOp {
                 cursor.close();
             }
         }
-        return foodList;
+        callback.onFoodLoaded(foodList);
     }
 
     @Override
-    public boolean addFood(FoodBean foodBean) {
+    public void addFood(FoodBean foodBean) {
         SQLiteDatabase database = null;
-        boolean flag = false;
         String sql = "insert into " + foodTable + " (canteen , name , price , kind , score , id )values(?,?,?,?,?,?)";
         try {
             database = FoodDbOpenHelper.getHelper().getWritableDatabase();
             database.execSQL(sql, new Object[]{foodBean.getCanteen(), foodBean.getName(), foodBean.getPrice(), foodBean.getKind(), foodBean.getScore(), foodBean.getId()});
-            flag = true;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -152,18 +152,15 @@ public class FoodLocalDataOp implements IFoodDataOp {
                 database.close();
             }
         }
-        return flag;
     }
 
     @Override
-    public boolean changeScore(FoodBean bean) {
+    public void changeScore(FoodBean bean) {
         SQLiteDatabase database = null;
-        boolean flag = false;
         String sql = "update " + foodTable + " (price)values(?) where id = ?";
         try {
             database = FoodDbOpenHelper.getHelper().getWritableDatabase();
             database.execSQL(sql, new Object[]{bean.getPrice(), bean.getId()});
-            flag = true;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -171,6 +168,5 @@ public class FoodLocalDataOp implements IFoodDataOp {
                 database.close();
             }
         }
-        return flag;
     }
 }

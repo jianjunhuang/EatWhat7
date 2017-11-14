@@ -1,7 +1,7 @@
 package com.jinjunhuang.eatwhat.model.remote;
 
-import com.jinjunhuang.eatwhat.model.FilterBean;
-import com.jinjunhuang.eatwhat.model.FoodBean;
+import com.jinjunhuang.eatwhat.model.bean.FilterBean;
+import com.jinjunhuang.eatwhat.model.bean.FoodBean;
 import com.jinjunhuang.eatwhat.model.IFoodDataOp;
 
 import java.util.List;
@@ -9,32 +9,33 @@ import java.util.List;
 /**
  * @author jianjunhuang.me@foxmail.com
  *         create on 2017/10/17.
+ *         只同步数据库和上传
  */
 
 public class FoodRemoteDataOp implements IFoodDataOp {
 
     @Override
-    public List<FoodBean> getSpecifyFoods(FilterBean filterBean) {
-        return null;
+    public void getSpecifyFoods(FilterBean bean, LoadFoodCallback callback) {
+
     }
 
     @Override
-    public List<FoodBean> getAllFoods() {
-        return null;
+    public void getAllFoods(LoadFoodCallback callback) {
+
     }
 
     @Override
-    public List<FoodBean> getIEatFoods() {
-        return null;
+    public void getIEatFoods(LoadFoodCallback callback) {
+
     }
 
     @Override
-    public boolean addFood(FoodBean bean) {
-        return false;
+    public void addFood(FoodBean food) {
+
     }
 
     @Override
-    public boolean changeScore(FoodBean bean) {
-        return false;
+    public void changeScore(FoodBean food) {
+
     }
 }

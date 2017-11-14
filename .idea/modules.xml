@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/loadingcirclebtn/loadingcirclebtn.iml" filepath="$PROJECT_DIR$/loadingcirclebtn/loadingcirclebtn.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvptools/mvptools.iml" filepath="$PROJECT_DIR$/mvptools/mvptools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shadowlayoutlibrary/shadowlayoutlibrary.iml" filepath="$PROJECT_DIR$/shadowlayoutlibrary/shadowlayoutlibrary.iml" />
     </modules>
   </component>
 </project>

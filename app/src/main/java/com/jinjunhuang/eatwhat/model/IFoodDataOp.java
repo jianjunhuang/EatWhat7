@@ -1,9 +1,9 @@
 package com.jinjunhuang.eatwhat.model;
 
-import com.jinjunhuang.eatwhat.model.FoodBean;
+import com.jinjunhuang.eatwhat.model.bean.FilterBean;
+import com.jinjunhuang.eatwhat.model.bean.FoodBean;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author jianjunhuang.me@foxmail.com
@@ -12,15 +12,27 @@ import java.util.Map;
 
 public interface IFoodDataOp {
 
-    List<FoodBean> getSpecifyFoods(FilterBean bean);
+    interface LoadFoodCallback {
+        void onFoodLoaded(List<FoodBean> food);
 
-    List<FoodBean> getAllFoods();
+        void onDataNotAvilable();
+    }
 
-    List<FoodBean> getIEatFoods();
+    interface GetFoodCallback {
+        void onFoodLoaded(FoodBean foodBean);
 
-    boolean addFood(FoodBean food);
+        void onDataNotAvilable();
+    }
 
-    boolean changeScore(FoodBean food);
+    void getSpecifyFoods(FilterBean bean, LoadFoodCallback callback);
+
+    void getAllFoods(LoadFoodCallback callback);
+
+    void getIEatFoods(LoadFoodCallback callback);
+
+    void addFood(FoodBean food);
+
+    void changeScore(FoodBean food);
 
 
 }

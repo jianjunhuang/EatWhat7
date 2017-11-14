@@ -11,7 +11,7 @@ import com.demo.jianjunhuang.mvptools.integration.BaseFragment;
 import com.demo.jianjunhuang.mvptools.utils.UiUtils;
 import com.jinjunhuang.eatwhat.R;
 import com.jinjunhuang.eatwhat.model.local.FoodLocalDataOp;
-import com.jinjunhuang.eatwhat.model.FoodBean;
+import com.jinjunhuang.eatwhat.model.bean.FoodBean;
 import com.jinjunhuang.loadingcirclebtn.LoadingCircleBtn;
 
 /**
@@ -93,12 +93,7 @@ public class AddFoodFragment extends BaseFragment implements Spinner.OnItemSelec
             foodBean.setId(name + canteenSp.getSelectedItemPosition() + priceStr + kindSp.getSelectedItemPosition());
 
             FoodLocalDataOp dao = new FoodLocalDataOp();
-            boolean tag = dao.addFood(foodBean);
-            if (tag) {
-                addBtn.setStatus(LoadingCircleBtn.STATUS_LOAD_SUCCESS);
-            } else {
-                addBtn.setStatus(LoadingCircleBtn.STATUS_LOAD_FAILED);
-            }
+            dao.addFood(foodBean);
         } else if (addBtn.getStatus() != LoadingCircleBtn.STATUS_LOADING) {
             addBtn.setStatus(LoadingCircleBtn.STATUS_DEFAULT);
         }
