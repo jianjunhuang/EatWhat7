@@ -16,4 +16,15 @@
 
     <string name="login">登录</string>
     <string name="sign_up">注册</string>
+
+    <string name="email_failed">请输入正确邮件</string>
+    <string name="pwd_failed">请输入8至16位的密码</string>
+    <string name="sure_pwd_failed">两次输入的密码不同</string>
+    <string name="sure_pwd_not_input_failed">请再次输入确认密码</string>
+    <string name="login_success">登录成功</string>
+    <string name="sign_up_success">注册成功</string>
+
+    <string name="email_hint">邮件</string>
+    <string name="pwd_hint">密码(8-16位)</string>
+    <string name="sure_pwd_hint">确认密码(8-16位)</string>
 </resources>

@@ -10,25 +10,49 @@ import com.demo.jianjunhuang.mvptools.mvp.IView;
  */
 
 public interface LoginContract {
-    public interface View extends IView {
+    interface View extends IView {
         void loginSuccess();
 
-        void loginFailed();
+        void loginFailed(String reason);
 
         void signUpSuccess();
 
-        void signUpFailed();
+        void signUpFailed(String reason);
+
+        void showInputEmailErr();
+
+        void showNotInputEmailErr();
+
+        void showInputPwdErr();
+
+        void showNotInputPwdErr();
+
+        void showInputSurePwdErr();
+
+        void showNotInputSurePwdErr();
     }
 
-    public interface Model extends IModel {
-        void login(String usr, String pwd);
+    interface Model extends IModel {
+        void login(String email, String pwd);
 
-        void signUp(String usr, String pwd, String surePwd);
+        void signUp(String email, String pwd, String surePwd);
+
+        void setCallback(Callback mCallback);
+
+        interface Callback {
+            void onLoginSuccess();
+
+            void onLoginFailed(String reason);
+
+            void onSignUpSuccess();
+
+            void onSignUpFailed(String reason);
+        }
     }
 
-    public interface Presenter extends IPresenter {
-        void login(String usr, String pwd);
+    interface Presenter extends IPresenter {
+        void login(String email, String pwd);
 
-        void signUp(String usr, String pwd, String surePwd);
+        void signUp(String email, String pwd, String surePwd);
     }
 }

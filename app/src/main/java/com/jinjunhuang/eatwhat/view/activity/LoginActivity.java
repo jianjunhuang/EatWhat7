@@ -2,7 +2,9 @@ package com.jinjunhuang.eatwhat.view.activity;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +13,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.demo.jianjunhuang.mvptools.integration.BaseActivity;
+import com.demo.jianjunhuang.mvptools.utils.DeviceUtils;
 import com.demo.jianjunhuang.mvptools.utils.ToastUtils;
+import com.demo.jianjunhuang.mvptools.utils.UiUtils;
 import com.jinjunhuang.eatwhat.R;
 import com.jinjunhuang.eatwhat.contract.LoginContract;
 import com.jinjunhuang.eatwhat.presenter.impl.LoginPresenter;
@@ -22,6 +26,8 @@ import com.jinjunhuang.eatwhat.presenter.impl.LoginPresenter;
  */
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, LoginContract.View {
+
+    private CoordinatorLayout mCoordinatorLayout;
 
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private Toolbar mToolbar;
@@ -58,6 +64,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         signUpFab = findView(R.id.login_sign_up_btn);
         mCollapsingToolbarLayout = findView(R.id.login_collapsing_toolbar_layout);
         initToolbar();
+        mCoordinatorLayout = findView(R.id.login_coordinator_layout);
         emailInputLayout = findView(R.id.login_email_text_input_layout);
         emailInputEdt = findView(R.id.login_email_text_input_edt);
         pwdInputLayout = findView(R.id.login_pwd_text_input_layout);
@@ -113,10 +120,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 break;
             }
             case R.id.login_btn: {
-                ToastUtils.show("login");
+                if (isLoginStatus) {
+                    mPresenter.login(emailInputEdt.getText().toString(), pwdInputEdt.getText().toString());
+                } else {
+                    mPresenter.signUp(emailInputEdt.getText().toString(), pwdInputEdt.getText().toString(), pwdSureEdt.getText().toString());
+                }
                 break;
             }
         }
+        DeviceUtils.hideSoftKeyboard(this, mCoordinatorLayout);
     }
 
     private void changeToLoginStatus() {
@@ -150,21 +162,57 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void loginSuccess() {
-
+        Snackbar.make(mCoordinatorLayout, R.string.login_success, Snackbar.LENGTH_INDEFINITE).show();
     }
 
     @Override
-    public void loginFailed() {
-
+    public void loginFailed(String reason) {
+        Snackbar.make(mCoordinatorLayout, reason, Snackbar.LENGTH_INDEFINITE).show();
     }
 
     @Override
     public void signUpSuccess() {
-
+        Snackbar.make(mCoordinatorLayout, R.string.sign_up_success, Snackbar.LENGTH_INDEFINITE).show();
     }
 
     @Override
-    public void signUpFailed() {
+    public void signUpFailed(String reason) {
+        Snackbar.make(mCoordinatorLayout, reason, Snackbar.LENGTH_INDEFINITE).show();
+    }
 
+    @Override
+    public void showInputEmailErr() {
+        emailInputLayout.setError(getString(R.string.email_failed));
+    }
+
+    @Override
+    public void showNotInputEmailErr() {
+        emailInputLayout.setError(getString(R.string.email_failed));
+    }
+
+    @Override
+    public void showInputPwdErr() {
+        pwdInputLayout.setError(getString(R.string.pwd_failed));
+    }
+
+    @Override
+    public void showNotInputPwdErr() {
+        pwdInputLayout.setError(getString(R.string.pwd_failed));
+    }
+
+    @Override
+    public void showInputSurePwdErr() {
+        pwdInputLayout.setError(getString(R.string.sure_pwd_not_input_failed));
+    }
+
+    @Override
+    public void showNotInputSurePwdErr() {
+        pwdInputLayout.setError(getString(R.string.sure_pwd_failed));
+    }
+
+    private void clearErrShow() {
+        emailInputLayout.setError("");
+        pwdInputLayout.setError("");
+        pwdSureInputLayout.setError("");
     }
 }
