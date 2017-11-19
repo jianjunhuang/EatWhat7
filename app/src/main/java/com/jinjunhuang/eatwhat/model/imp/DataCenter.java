@@ -1,5 +1,6 @@
-package com.jinjunhuang.eatwhat.model;
+package com.jinjunhuang.eatwhat.model.imp;
 
+import com.jinjunhuang.eatwhat.model.IFoodDataOp;
 import com.jinjunhuang.eatwhat.model.bean.FilterBean;
 import com.jinjunhuang.eatwhat.model.bean.FoodBean;
 import com.jinjunhuang.eatwhat.model.local.FoodLocalDataOp;
@@ -12,7 +13,7 @@ import java.util.List;
  *         create on 2017/10/17.
  */
 
-public class DataCenter implements IFoodDataOp{
+public class DataCenter implements IFoodDataOp {
 
     private FoodLocalDataOp localDataOp;
     private FoodRemoteDataOp remoteDataOp;

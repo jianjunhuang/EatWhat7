@@ -3,7 +3,7 @@ package com.jinjunhuang.eatwhat.presenter.impl;
 import android.text.TextUtils;
 
 import com.jinjunhuang.eatwhat.contract.LoginContract;
-import com.jinjunhuang.eatwhat.model.LoginModel;
+import com.jinjunhuang.eatwhat.model.imp.LoginModel;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

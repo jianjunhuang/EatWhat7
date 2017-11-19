@@ -1,19 +1,19 @@
-package com.jinjunhuang.eatwhat.model;
+package com.jinjunhuang.eatwhat.model.imp;
 
 import com.jinjunhuang.eatwhat.model.bean.FoodBean;
 import com.jinjunhuang.eatwhat.model.local.FoodLocalDataOp;
-import com.jinjunhuang.eatwhat.contract.ShowAllFoodContract;
+import com.jinjunhuang.eatwhat.contract.WhatIEatContract;
 
 import java.util.List;
 
 /**
  * @author jianjunhuang.me@foxmail.com
- *         create on 2017/10/1.
+ *         create on 2017/10/2.
  */
 
-public class ShowAllFoodModel implements ShowAllFoodContract.Model<FoodBean> {
+public class WhatIEatModel implements WhatIEatContract.Model<FoodBean> {
 
-    private FoodLocalDataOp dao = new FoodLocalDataOp();
+    FoodLocalDataOp dao = new FoodLocalDataOp();
 
     @Override
     public void onDestroy() {
@@ -23,5 +23,10 @@ public class ShowAllFoodModel implements ShowAllFoodContract.Model<FoodBean> {
     @Override
     public List<FoodBean> loadData() {
         return null;
+    }
+
+    @Override
+    public void changeScore(float score, FoodBean bean) {
+
     }
 }

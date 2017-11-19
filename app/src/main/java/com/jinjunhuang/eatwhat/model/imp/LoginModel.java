@@ -1,4 +1,4 @@
-package com.jinjunhuang.eatwhat.model;
+package com.jinjunhuang.eatwhat.model.imp;
 
 import com.jinjunhuang.eatwhat.contract.LoginContract;
 

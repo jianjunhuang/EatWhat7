@@ -1,5 +1,7 @@
 package com.jinjunhuang.eatwhat.view.activity;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -11,11 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.demo.jianjunhuang.mvptools.integration.BaseActivity;
 import com.demo.jianjunhuang.mvptools.utils.DeviceUtils;
-import com.demo.jianjunhuang.mvptools.utils.ToastUtils;
-import com.demo.jianjunhuang.mvptools.utils.UiUtils;
 import com.jinjunhuang.eatwhat.R;
 import com.jinjunhuang.eatwhat.contract.LoginContract;
 import com.jinjunhuang.eatwhat.presenter.impl.LoginPresenter;
@@ -29,6 +30,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     private CoordinatorLayout mCoordinatorLayout;
 
+    AlertDialog.Builder mBuilder;
+    AlertDialog mDialog;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private Toolbar mToolbar;
     private AppBarLayout mAppBarLayout;
@@ -37,12 +40,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private TextInputLayout emailInputLayout;
     private TextInputLayout pwdInputLayout;
     private TextInputLayout pwdSureInputLayout;
-    private TextInputLayout usrnameInputLayout;
 
     private TextInputEditText emailInputEdt;
     private TextInputEditText pwdInputEdt;
     private TextInputEditText pwdSureEdt;
-    private TextInputEditText usrnameEdt;
+
+    private TextView forgetPwdTv;
 
     private Button loginBtn;
 
@@ -71,9 +74,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         pwdInputEdt = findView(R.id.login_pwd_text_input_edt);
         pwdSureEdt = findView(R.id.login_pwd_sure_text_input_edt);
         pwdSureInputLayout = findView(R.id.login_pwd_sure_text_input_layout);
-        usrnameEdt = findView(R.id.login_usr_name_text_input_edt);
-        usrnameInputLayout = findView(R.id.login_usr_name_text_input_layout);
         loginBtn = findView(R.id.login_btn);
+        forgetPwdTv = findView(R.id.login_forget_pwd_tv);
+        initDialog();
     }
 
     private void initToolbar() {
@@ -83,6 +86,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void initDialog() {
+        mBuilder = new AlertDialog.Builder(this);
+        mBuilder.setTitle(R.string.tips);
+        mBuilder.setPositiveButton(R.string.ok, null);
+        mBuilder.setMessage(getString(R.string.sign_up_success) + "," + getString(R.string.confirm_tips));
+        mDialog = mBuilder.create();
     }
 
     private static final String TAG = "LoginActivity";
@@ -106,10 +117,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         signUpFab.setOnClickListener(this);
 
         loginBtn.setOnClickListener(this);
+
+        forgetPwdTv.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        clearErrShow();
         switch (v.getId()) {
             case R.id.login_sign_up_btn: {
                 if (isLoginStatus) {
@@ -127,6 +141,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 }
                 break;
             }
+            case R.id.login_forget_pwd_tv: {
+                Intent intent = new Intent(LoginActivity.this, RestPwdActivity.class);
+                startActivity(intent);
+                break;
+            }
         }
         DeviceUtils.hideSoftKeyboard(this, mCoordinatorLayout);
     }
@@ -136,6 +155,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         pwdSureInputLayout.setVisibility(View.GONE);
         loginBtn.setText(R.string.login);
         signUpFab.setImageResource(R.drawable.ic_add_white_24dp);
+        forgetPwdTv.setVisibility(View.VISIBLE);
     }
 
     private void changeToSignUpStatus() {
@@ -143,6 +163,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         pwdSureInputLayout.setVisibility(View.VISIBLE);
         loginBtn.setText(R.string.sign_up);
         signUpFab.setImageResource(R.drawable.ic_perm_identity_white_24dp);
+        forgetPwdTv.setVisibility(View.GONE);
     }
 
     @Override
@@ -173,6 +194,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void signUpSuccess() {
         Snackbar.make(mCoordinatorLayout, R.string.sign_up_success, Snackbar.LENGTH_INDEFINITE).show();
+        mDialog.show();
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.jinjunhuang.eatwhat.presenter.impl;
 
 import com.jinjunhuang.eatwhat.contract.ShowAllFoodContract;
 import com.jinjunhuang.eatwhat.model.bean.FoodBean;
-import com.jinjunhuang.eatwhat.model.ShowAllFoodModel;
+import com.jinjunhuang.eatwhat.model.imp.ShowAllFoodModel;
 import com.jinjunhuang.eatwhat.presenter.IShowAllFoodPresenter;
 
 import java.util.List;

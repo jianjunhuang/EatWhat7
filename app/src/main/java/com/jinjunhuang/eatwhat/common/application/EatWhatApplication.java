@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 
 /**
  * @author jianjunhuang.me@foxmail.com
@@ -48,5 +49,6 @@ public class EatWhatApplication extends BaseApplication {
             e.printStackTrace();
         }
         Bmob.initialize(this, appId, "bmob");
+        UserInfo.user = BmobUser.getCurrentUser();
     }
 }

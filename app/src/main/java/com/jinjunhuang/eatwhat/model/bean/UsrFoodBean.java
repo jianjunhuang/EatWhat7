@@ -1,4 +1,4 @@
-package com.jinjunhuang.eatwhat.model;
+package com.jinjunhuang.eatwhat.model.bean;
 
 import cn.bmob.v3.BmobObject;
 

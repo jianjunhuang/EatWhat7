@@ -27,4 +27,11 @@
     <string name="email_hint">邮件</string>
     <string name="pwd_hint">密码(8-16位)</string>
     <string name="sure_pwd_hint">确认密码(8-16位)</string>
+
+    <string name="forget_pwd">忘记密码</string>
+
+    <string name="tips">Tips</string>
+    <string name="confirm_tips">需要到邮箱验证后，才能解锁完整的功能</string>
+    <string name="ok">好的</string>
+    <string name="rest_pwd">重置密码</string>
 </resources>
